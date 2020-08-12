@@ -1,0 +1,17 @@
+﻿<Window x:Class="StudentMangment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentMangment"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="807.2">
+    <Grid>
+        <DataGrid x:Name="gridWithStudent" HorizontalAlignment="Left" Height="332" Margin="10,10,0,0" VerticalAlignment="Top" Width="711" ColumnWidth="*" AutoGeneratingColumn="DG1_AutoGeneratingColumn" SelectionChanged="gridWithStudent_SelectionChanged" SelectionMode="Single" IsReadOnly="True"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Width="81" Height="41" Click="ButtonAdd_Click"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="110,359,0,0" VerticalAlignment="Top" Width="81" Height="41" Click="ButtonEdit_Click" x:Name="EditBtn"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="210,359,0,0" VerticalAlignment="Top" Width="81" Height="41" Click="ButtonDelete_Click" x:Name="DeleteBtn"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="734,10,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="ButtonRefresh_Click"/>
+
+    </Grid>
+</Window>

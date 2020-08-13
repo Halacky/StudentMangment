@@ -11,8 +11,11 @@
         <Label Content="Name" HorizontalAlignment="Left" Margin="24,41,0,0" VerticalAlignment="Top"/>
         <Label Content="Surname" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
         <Label Content="Lastname" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
-        
-        <TextBox x:Name="tbGender" HorizontalAlignment="Left" Height="23" Margin="71,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>
+
+        <ComboBox x:Name="cbGender" HorizontalAlignment="Left" Margin="71,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbGender_SelectionChanged">
+            <TextBlock>Муж</TextBlock>
+            <TextBlock>Жен</TextBlock>
+        </ComboBox>
         <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="23" Margin="71,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>
         <TextBox x:Name="tbSurname" HorizontalAlignment="Left" Height="23" Margin="71,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>
         <TextBox x:Name="tbLastname" HorizontalAlignment="Left" Height="23" Margin="71,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>

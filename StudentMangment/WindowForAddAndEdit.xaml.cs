@@ -18,12 +18,13 @@ namespace StudentMangment
 {
     public partial class WindowForAddAndEdit: Window,IWorkDb, ICreatableItem
     {
-        public WindowForAddAndEdit(string nameOfBtn)
+        public WindowForAddAndEdit(string nameOfBtn, UniversityManagmentDBEntities1 dBEntities1)
         {
             InitializeComponent();
             EnabledBtn();
 
-            tbGender.MaxLength = 40;
+            universityManagmentDB = dBEntities1;
+
             tbName.MaxLength = 40;
             tbLastname.MaxLength = 40;
             tbLastname.MaxLength = 40;
@@ -31,20 +32,20 @@ namespace StudentMangment
             NameOfBtn = nameOfBtn;
             btnOnSubWindow.Content = nameOfBtn;
         }
-        public WindowForAddAndEdit(string nameOfBtn, Student student)
+        public WindowForAddAndEdit(string nameOfBtn, Student student, UniversityManagmentDBEntities1 dBEntities1)
         {
             InitializeComponent();
             EnabledBtn();
 
-            tbGender.MaxLength = 40;
             tbName.MaxLength = 40;
             tbLastname.MaxLength = 40;
             tbLastname.MaxLength = 40;
 
             NameOfBtn = nameOfBtn;
             btnOnSubWindow.Content = nameOfBtn;
+            universityManagmentDB = dBEntities1;
 
-            tbGender.Text = student.Gender.Trim();
+            cbGender.Text = student.Gender.Trim();
             tbName.Text = student.Name.Trim();
             tbSurname.Text = student.Surname.Trim();
             tbLastname.Text = student.Lastname.Trim();
@@ -52,12 +53,12 @@ namespace StudentMangment
         }
         private string NameOfBtn { get; set; }
         public int updatingStudentId { get; set; }
-        private UniversityManagmentDBEntities1 universityManagmentDB = new UniversityManagmentDBEntities1();
+        private UniversityManagmentDBEntities1 universityManagmentDB{ get; set; }
 
 
         private void EnabledBtn()
         {
-            if (tbGender.Text.Trim().Length==0|| tbName.Text.Trim().Length == 0 || tbSurname.Text.Trim().Length == 0)
+            if (cbGender.SelectedItem == null || tbName.Text.Trim().Length == 0 || tbSurname.Text.Trim().Length == 0)
             {
                 btnOnSubWindow.IsEnabled = false;
             }
@@ -68,7 +69,7 @@ namespace StudentMangment
         }
         private void ButtonAddOrUpdate_Click(object sender, RoutedEventArgs e)
         { 
-            if (IsDublicate(universityManagmentDB))
+            if (IsDublicate(universityManagmentDB) && NameOfBtn == "Add")
             {
                 MessageBox.Show("Данный студент уже есть в БД.");
             }
@@ -110,14 +111,14 @@ namespace StudentMangment
             Student student = new Student();
             if (tbLastname.Text.Trim().Length==0)
             {
-                student.Gender = tbGender.Text;
+                student.Gender = cbGender.Text;
                 student.Name = tbName.Text;
                 student.Surname = tbSurname.Text;
                 student.Lastname = "Нет";
             }
             else
             {
-                student.Gender = tbGender.Text;
+                student.Gender = cbGender.Text;
                 student.Name = tbName.Text;
                 student.Surname = tbSurname.Text;
                 student.Lastname = tbLastname.Text;
@@ -134,7 +135,7 @@ namespace StudentMangment
 
             if (student != null)
             {
-                student.Gender = tbGender.Text;
+                student.Gender = cbGender.Text;
                 student.Name = tbName.Text;
                 student.Surname = tbSurname.Text;
 
@@ -152,13 +153,17 @@ namespace StudentMangment
 
         public bool IsDublicate(UniversityManagmentDBEntities1 universityManagmentDB)
         {
-            return universityManagmentDB.Students
-                                        .Any(item => item.Name == tbName.Text &&
-                                                     item.Surname == tbSurname.Text &&
-                                                     item.Lastname == tbLastname.Text);
+            return universityManagmentDB.Students.Any(item => item.Name == tbName.Text &&
+                                                              item.Surname == tbSurname.Text &&
+                                                              item.Lastname == tbLastname.Text);
         }
     
         private void tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EnabledBtn();
+        }
+
+        private void cbGender_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             EnabledBtn();
         }

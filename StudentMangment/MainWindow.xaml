@@ -5,13 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentMangment"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="807.2">
+        Title="MainWindow" Height="459.6" Width="815.6">
     <Grid>
-        <DataGrid x:Name="gridWithStudent" HorizontalAlignment="Left" Height="332" Margin="10,10,0,0" VerticalAlignment="Top" Width="711" ColumnWidth="*" AutoGeneratingColumn="DG1_AutoGeneratingColumn" SelectionChanged="gridWithStudent_SelectionChanged" SelectionMode="Single" IsReadOnly="True"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Width="81" Height="41" Click="ButtonAdd_Click"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="110,359,0,0" VerticalAlignment="Top" Width="81" Height="41" Click="ButtonEdit_Click" x:Name="EditBtn"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="210,359,0,0" VerticalAlignment="Top" Width="81" Height="41" Click="ButtonDelete_Click" x:Name="DeleteBtn"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="734,10,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="ButtonRefresh_Click"/>
+        <DataGrid x:Name="gridWithStudent" HorizontalAlignment="Right" Height="257" Margin="18,114,18,0" VerticalAlignment="Top" Width="768" ColumnWidth="*" AutoGeneratingColumn="DG1_AutoGeneratingColumn" SelectionChanged="gridWithStudent_SelectionChanged" SelectionMode="Single" IsReadOnly="True"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="23,383,0,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonAdd_Click"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="88,383,0,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonEdit_Click" x:Name="EditBtn"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="153,383,0,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonDelete_Click" x:Name="DeleteBtn"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="731,383,0,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonRefresh_Click"/>
+
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="23" Margin="30,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tbSearch_TextChanged" />
+        <TextBox x:Name="tbSurname" HorizontalAlignment="Left" Height="23" Margin="155,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tbSearch_TextChanged" />
+        <TextBox x:Name="tbLastname" HorizontalAlignment="Left" Height="23" Margin="280,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tbSearch_TextChanged" />
+
+        <RadioButton x:Name="rbMale" Content="Муж" HorizontalAlignment="Left" Margin="405,36,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton x:Name="rbFemale" Content="Жен" HorizontalAlignment="Left" Margin="405,51,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton x:Name="rbAll" Content="Все" HorizontalAlignment="Left" Margin="405,66,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+
+        <Label Content="Имя:" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="155,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Отчество:" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Пол:" HorizontalAlignment="Left" Margin="405,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

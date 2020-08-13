@@ -21,11 +21,13 @@ namespace StudentMangment
     /// </summary>
     public partial class MainWindow : Window, IWorkDb
     {
+        private UniversityManagmentDBEntities1 dBEntities { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            dBEntities = new UniversityManagmentDBEntities1();
             CheckCountOfSelectedItems();
-            UniversityManagmentDBEntities1 dBEntities = new UniversityManagmentDBEntities1();
             gridWithStudent.ItemsSource = dBEntities.Students.ToList();
         }
 
@@ -39,20 +41,23 @@ namespace StudentMangment
             }
         }//EditGrid
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)//add
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)//addBtn
         {
-            WindowForAddAndEdit windowForAddAndEdit = new WindowForAddAndEdit("Add");
+            WindowForAddAndEdit windowForAddAndEdit = new WindowForAddAndEdit("Add",dBEntities);
             windowForAddAndEdit.Show();
         }
 
-        private void ButtonRefresh_Click(object sender, RoutedEventArgs e)//refresh
+        private void ButtonRefresh_Click(object sender, RoutedEventArgs e)//refreshBtn
         {
             Refresh();
+            tbName.Text = "";
+            tbSurname.Text = "";
+            tbLastname.Text = "";
         }
 
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)//delete
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)//deleteBtn
         {
-            UniversityManagmentDBEntities1 dBEntities = new UniversityManagmentDBEntities1();
+
             var student = (Student)gridWithStudent.SelectedItems[0];
 
             var singleStudentObj = (from st in dBEntities.Students
@@ -67,7 +72,7 @@ namespace StudentMangment
             Refresh();
         }
         
-        private void ButtonEdit_Click(object sender, RoutedEventArgs e)//edit
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)//editBtn
         {
             if (gridWithStudent.SelectedIndex >= 0)
             {
@@ -76,7 +81,7 @@ namespace StudentMangment
                     if (gridWithStudent.SelectedItems[0].GetType() == typeof(Student))
                     {
                         var student = (Student)gridWithStudent.SelectedItems[0];
-                        WindowForAddAndEdit windowForAddAndEdit = new WindowForAddAndEdit("Update", student);
+                        WindowForAddAndEdit windowForAddAndEdit = new WindowForAddAndEdit("Update", student, dBEntities);
                         windowForAddAndEdit.Show();
                     }
                 }
@@ -100,9 +105,9 @@ namespace StudentMangment
 
         private void Refresh()
         {
-            UniversityManagmentDBEntities1 dBEntities = new UniversityManagmentDBEntities1();
+            
             gridWithStudent.ItemsSource = dBEntities.Students.ToList();
-        }
+        }//methodForRefresh
 
         public void SaveChanges(UniversityManagmentDBEntities1 universityManagmentDB)
         {
@@ -124,11 +129,49 @@ namespace StudentMangment
                 }
                 throw;
             }
-        }
+        }//saveDbWithTryCatch
 
         private void gridWithStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CheckCountOfSelectedItems();
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FilterBySymbols();
+        }        
+
+        private void FilterBySymbols()
+        {
+            var filteredDb = dBEntities.Students.Where(item => item.Name.StartsWith(tbName.Text)&& 
+                                                       item.Surname.StartsWith(tbSurname.Text)&& 
+                                                       item.Lastname.StartsWith(tbLastname.Text)).Select(item => item);
+            gridWithStudent.ItemsSource = filteredDb.ToList();
+        }//SearchInDb
+
+        private void FilterBySymbols(string gender)
+        {
+            var filteredDb = dBEntities.Students.Where(item => item.Name.StartsWith(tbName.Text)&&
+                                                       item.Surname.StartsWith(tbSurname.Text)&&
+                                                       item.Lastname.StartsWith(tbLastname.Text)&&
+                                                       item.Gender == gender).Select(item => item);
+            gridWithStudent.ItemsSource = filteredDb.ToList();
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)rbMale.IsChecked)
+            {
+                FilterBySymbols("Муж");                
+            }
+            else if((bool)rbFemale.IsChecked)
+            {
+                FilterBySymbols("Жен");                
+            }
+            else
+            {
+                FilterBySymbols();
+            }
         }
     }
 }

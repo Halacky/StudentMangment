@@ -7,24 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="459.6" Width="815.6">
     <Grid>
-        <DataGrid x:Name="gridWithStudent" HorizontalAlignment="Right" Height="257" Margin="18,114,18,0" VerticalAlignment="Top" Width="768" ColumnWidth="*" AutoGeneratingColumn="DG1_AutoGeneratingColumn" SelectionChanged="gridWithStudent_SelectionChanged" SelectionMode="Single" IsReadOnly="True"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="23,383,0,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonAdd_Click"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="88,383,0,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonEdit_Click" x:Name="EditBtn"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="153,383,0,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonDelete_Click" x:Name="DeleteBtn"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="731,383,0,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonRefresh_Click"/>
+        <DataGrid x:Name="gridWithStudent" Height="233" Margin="0,138,17.6,0" VerticalAlignment="Top" ColumnWidth="*" AutoGeneratingColumn="DG1_AutoGeneratingColumn" SelectionChanged="gridWithStudent_SelectionChanged" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Right" Width="768"/>
+        <Button Content="Add" HorizontalAlignment="Right" Margin="0,383,726.6,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonAdd_Click"/>
+        <Button Content="Edit" HorizontalAlignment="Right" Margin="0,383,661.6,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonEdit_Click" x:Name="EditBtn"/>
+        <Button Content="Delete" HorizontalAlignment="Right" Margin="0,383,596.6,0" VerticalAlignment="Top" Width="60" Height="27" Click="ButtonDelete_Click" x:Name="DeleteBtn"/>
+        <Button Content="Update" Margin="731,383,0,0" VerticalAlignment="Top" Height="27" Click="ButtonRefresh_Click" HorizontalAlignment="Left" Width="60"/>
 
-        <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="23" Margin="30,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tbSearch_TextChanged" />
-        <TextBox x:Name="tbSurname" HorizontalAlignment="Left" Height="23" Margin="155,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tbSearch_TextChanged" />
-        <TextBox x:Name="tbLastname" HorizontalAlignment="Left" Height="23" Margin="280,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tbSearch_TextChanged" />
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="23" Margin="30,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tbSearch_TextChanged" />
+        <TextBox x:Name="tbSurname" HorizontalAlignment="Left" Height="23" Margin="155,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tbSearch_TextChanged" />
+        <TextBox x:Name="tbLastname" HorizontalAlignment="Left" Height="23" Margin="280,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tbSearch_TextChanged" />
 
-        <RadioButton x:Name="rbMale" Content="Муж" HorizontalAlignment="Left" Margin="405,36,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
-        <RadioButton x:Name="rbFemale" Content="Жен" HorizontalAlignment="Left" Margin="405,51,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
-        <RadioButton x:Name="rbAll" Content="Все" HorizontalAlignment="Left" Margin="405,66,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton x:Name="rbMale" Content="Муж" HorizontalAlignment="Left" Margin="405,62,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton x:Name="rbFemale" Content="Жен" HorizontalAlignment="Left" Margin="405,77,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton x:Name="rbAll" Content="Все" HorizontalAlignment="Left" Margin="405,92,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
 
-        <Label Content="Имя:" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="155,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Отчество:" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Пол:" HorizontalAlignment="Left" Margin="405,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Имя:" HorizontalAlignment="Left" Margin="30,36,0,0" VerticalAlignment="Top"/>
+        <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="155,36,0,0" VerticalAlignment="Top"/>
+        <Label Content="Отчество:" HorizontalAlignment="Left" Margin="280,36,0,0" VerticalAlignment="Top"/>
+        <Label Content="Поиск:" HorizontalAlignment="Right" Margin="0,0,717.6,393.6" VerticalAlignment="Bottom" Width="69"/>
+        <Label Content="Пол:" HorizontalAlignment="Left" Margin="405,36,0,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="90" Margin="24,0,0,303.6" VerticalAlignment="Bottom" Width="437"/>
+
 
     </Grid>
 </Window>
